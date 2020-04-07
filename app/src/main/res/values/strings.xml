@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Weather App</string>
+    <string name="daily_tab">Daily</string>
+    <string name="today_tab">Today</string>
+    <string name="humidity_label">Humidity</string>
+    <string name="pressure_label">Pressure</string>
+    <string name="wind_label">Wind</string>
 </resources>
