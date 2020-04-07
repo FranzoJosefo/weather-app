@@ -7,10 +7,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minHeight="?android:attr/listPreferredItemHeight"
-    android:paddingBottom="@dimen/list_item_padding_vertical"
-    android:paddingLeft="@dimen/list_item_padding_horizontal"
-    android:paddingRight="@dimen/list_item_padding_horizontal"
-    android:paddingTop="@dimen/list_item_padding_vertical">
+    android:paddingBottom="@dimen/weather_list_item_padding_vertical"
+    android:paddingLeft="@dimen/weather_list_item_padding_horizontal"
+    android:paddingRight="@dimen/weather_list_item_padding_horizontal"
+    android:paddingTop="@dimen/weather_list_item_padding_vertical">
 
     <ImageView
         android:id="@+id/weather_icon"
@@ -25,12 +25,12 @@
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/list_item_date_left_margin"
-        android:layout_marginStart="@dimen/list_item_date_start_margin"
+        android:layout_marginLeft="@dimen/weather_list_item_date_left_margin"
+        android:layout_marginStart="@dimen/weather_list_item_date_start_margin"
         android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintLeft_toRightOf="@+id/weather_icon"
-        tools:text="Today, April 03"/>
+        tools:text="Monday, April 03"/>
 
     <TextView
         android:id="@+id/weather_description"
