@@ -7,33 +7,40 @@ import java.util.List;
 public class WeatherModel {
     @SerializedName("dt")
     private int currentTime;
-    @SerializedName("temp")
-    private float temperature;
-    @SerializedName("feels_like")
-    private float realFeel;
     @SerializedName("weather")
     private List<BasicWeatherModel> basicWeatherModelList;
+    @SerializedName("pressure")
+    private int pressure;
+    @SerializedName("humidity")
+    private int humidity;
+    @SerializedName("wind_speed")
+    private double windSpeed;
 
-    public WeatherModel(int currentTime, float temperature, float realFeel, List<BasicWeatherModel> weatherList) {
+    public WeatherModel(int currentTime, List<BasicWeatherModel> basicWeatherModelList, int pressure, int humidity, double windSpeed) {
         this.currentTime = currentTime;
-        this.temperature = temperature;
-        this.realFeel = realFeel;
-        this.basicWeatherModelList = weatherList;
+        this.basicWeatherModelList = basicWeatherModelList;
+        this.pressure = pressure;
+        this.humidity = humidity;
+        this.windSpeed = windSpeed;
     }
 
     public int getCurrentTime() {
         return currentTime;
     }
 
-    public float getTemperature() {
-        return temperature;
-    }
-
-    public float getRealFeel() {
-        return realFeel;
-    }
-
     public List<BasicWeatherModel> getBasicWeatherModelList() {
         return basicWeatherModelList;
+    }
+
+    public int getPressure() {
+        return pressure;
+    }
+
+    public int getHumidity() {
+        return humidity;
+    }
+
+    public double getWindSpeed() {
+        return windSpeed;
     }
 }

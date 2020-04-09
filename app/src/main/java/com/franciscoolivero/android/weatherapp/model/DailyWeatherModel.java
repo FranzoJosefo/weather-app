@@ -4,12 +4,12 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-class DailyWeatherModel extends WeatherModel {
+public class DailyWeatherModel extends WeatherModel {
     @SerializedName("temp")
     private DailyTempModel dailyTempModel;
 
-    public DailyWeatherModel(int currentTime, float temperature, float realFeel, List<BasicWeatherModel> weatherList, DailyTempModel dailyTempModel) {
-        super(currentTime, temperature, realFeel, weatherList);
+    public DailyWeatherModel(int currentTime, List<BasicWeatherModel> basicWeatherModelList, int pressure, int humidity, float windSpeed, DailyTempModel dailyTempModel) {
+        super(currentTime, basicWeatherModelList, pressure, humidity, windSpeed);
         this.dailyTempModel = dailyTempModel;
     }
 

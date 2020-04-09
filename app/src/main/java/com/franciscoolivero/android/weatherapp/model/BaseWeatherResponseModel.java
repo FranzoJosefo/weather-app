@@ -6,9 +6,9 @@ import java.util.List;
 
 public class BaseWeatherResponseModel {
     @SerializedName("lat")
-    private float latitude;
+    private double latitude;
     @SerializedName("lon")
-    private float longitude;
+    private double longitude;
     @SerializedName("current")
     private CurrentWeatherModel currentWeatherModel;
     @SerializedName("hourly")
@@ -24,11 +24,11 @@ public class BaseWeatherResponseModel {
         this.dailyWeatherModelList = dailyWeatherModelList;
     }
 
-    public float getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public float getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
