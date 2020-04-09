@@ -4,11 +4,12 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
-import android.text.format.Formatter;
 import android.util.Log;
 
+import java.math.BigInteger;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
+import java.net.UnknownHostException;
 import java.util.Enumeration;
 
 public class NetUtils {
@@ -40,14 +41,14 @@ public class NetUtils {
         }
 
         if (MOBILE) {
-            IpAddress = GetDeviceipMobileData();
+            IpAddress = GetDeviceIpMobileData();
         }
 
         return IpAddress;
     }
 
 
-    private String GetDeviceipMobileData() {
+    private String GetDeviceIpMobileData() {
         try {
             for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces();
                  en.hasMoreElements(); ) {
@@ -65,14 +66,20 @@ public class NetUtils {
         return null;
     }
 
-    @SuppressWarnings("deprecation")
     private String GetDeviceIpWiFiData(Context context) {
 
+        InetAddress myInetIP = null;
         WifiManager wm = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
         String ip = null;
         if (wm != null) {
-            ip = Formatter.formatIpAddress(wm.getConnectionInfo().getIpAddress());
+            byte[] myIPAddress = BigInteger.valueOf(wm.getConnectionInfo().getIpAddress()).toByteArray();
+            try {
+                myInetIP = InetAddress.getByAddress(myIPAddress);
+            } catch (UnknownHostException e) {
+                e.printStackTrace();
+            }
+            ip = myInetIP != null ? myInetIP.getHostAddress() : null;
         }
         return ip;
     }
