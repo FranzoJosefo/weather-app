@@ -1,9 +1,13 @@
 package com.franciscoolivero.android.weatherapp.data;
 
 import com.franciscoolivero.android.weatherapp.di.DaggerApiComponent;
+import com.franciscoolivero.android.weatherapp.model.BaseWeatherResponseModel;
+import com.franciscoolivero.android.weatherapp.model.LocationModel;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+
+import io.reactivex.Single;
 
 @Singleton
 public class NetworkService {
@@ -25,4 +29,13 @@ public class NetworkService {
         }
         return instance;
     }
+
+    public Single<LocationModel> getCurrentLocation(String ipAddress) {
+        return ipApiService.getCurrentLocation(ipAddress);
+    }
+
+    public Single<BaseWeatherResponseModel> getWeatherData(String lat, String lon) {
+        return weatherMapApiService.getWeatherData(lat, lon);
+    }
+
 }
