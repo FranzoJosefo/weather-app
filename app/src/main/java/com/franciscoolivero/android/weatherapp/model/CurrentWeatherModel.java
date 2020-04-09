@@ -10,7 +10,7 @@ public class CurrentWeatherModel extends WeatherModel {
     @SerializedName("sunset")
     private int sunsetTime;
 
-    public CurrentWeatherModel(int currentTime, int temperature, int realFeel, List<BasicWeatherModel> weatherList, int sunriseTime, int sunsetTime) {
+    public CurrentWeatherModel(int currentTime, float temperature, float realFeel, List<BasicWeatherModel> weatherList, int sunriseTime, int sunsetTime) {
         super(currentTime, temperature, realFeel, weatherList);
         this.sunriseTime = sunriseTime;
         this.sunsetTime = sunsetTime;

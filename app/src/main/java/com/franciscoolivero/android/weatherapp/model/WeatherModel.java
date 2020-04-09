@@ -8,13 +8,13 @@ public class WeatherModel {
     @SerializedName("dt")
     private int currentTime;
     @SerializedName("temp")
-    private int temperature;
+    private float temperature;
     @SerializedName("feels_like")
-    private int realFeel;
+    private float realFeel;
     @SerializedName("weather")
     private List<BasicWeatherModel> basicWeatherModelList;
 
-    public WeatherModel(int currentTime, int temperature, int realFeel, List<BasicWeatherModel> weatherList) {
+    public WeatherModel(int currentTime, float temperature, float realFeel, List<BasicWeatherModel> weatherList) {
         this.currentTime = currentTime;
         this.temperature = temperature;
         this.realFeel = realFeel;
@@ -25,11 +25,11 @@ public class WeatherModel {
         return currentTime;
     }
 
-    public int getTemperature() {
+    public float getTemperature() {
         return temperature;
     }
 
-    public int getRealFeel() {
+    public float getRealFeel() {
         return realFeel;
     }
 

@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class DailyTempModel {
         @SerializedName("min")
-        private Double min;
+        private float min;
         @SerializedName("max")
-        private Double max;
+        private float max;
 }
