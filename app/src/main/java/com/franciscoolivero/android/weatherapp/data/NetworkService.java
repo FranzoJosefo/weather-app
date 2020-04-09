@@ -30,12 +30,12 @@ public class NetworkService {
         return instance;
     }
 
-    public Single<LocationModel> getCurrentLocation(String ipAddress) {
-        return ipApiService.getCurrentLocation(ipAddress);
+    public Single<LocationModel> getCurrentLocation() {
+        return ipApiService.getCurrentLocation();
     }
 
     public Single<BaseWeatherResponseModel> getWeatherData(String lat, String lon) {
-        return weatherMapApiService.getWeatherData(lat, lon);
+        return weatherMapApiService.getWeatherData(lat, lon, OpenWeatherMapApiService.UNIT_METRIC, OpenWeatherMapApiService.OPEN_WEATHER_API_KEY);
     }
 
 }
