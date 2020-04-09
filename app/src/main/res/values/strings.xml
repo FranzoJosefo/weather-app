@@ -1,8 +1,22 @@
 <resources>
     <string name="app_name">Weather App</string>
+
     <string name="daily_tab">Daily</string>
     <string name="today_tab">Today</string>
+
     <string name="humidity_label">Humidity</string>
     <string name="pressure_label">Pressure</string>
+    <string name="real_feel_label">Real Feel</string>
     <string name="wind_label">Wind</string>
+
+    <string name="temperature_unit">%1$.0f°</string>
+    <string name="temperature_real_feel_unit">%1$.1f°</string>
+    <string name="pressure_unit">%1$d hPa</string>
+    <string name="wind_speed_unit">%1$.1f km/h</string>
+    <string name="humidity_unit">%1$d%%</string>
+
+    <string name="open_weather_image_url">http://openweathermap.org/img/wn/%1$s@2x.png</string>
+
+    <string name="location_format">%1$s, %2$s</string>
+
 </resources>
