@@ -14,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 public class ApiModule {
 
-    private static final String BASE_URL_OPEN_WEATHER_MAP = "https://api.openweathermap.org/";
+    private static final String BASE_URL_OPEN_WEATHER_MAP = "https://api.openweathermap.org";
     private static final String BASE_URL_IP_API = "http://ip-api.com";
 
     @Provides
