@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingVertical="@dimen/default_vertical_padding">
-    
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal_middle"
         android:layout_width="wrap_content"
@@ -19,42 +19,53 @@
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:text="Saturday, September 24"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/weather_icon"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:text="Olivos, Buenos Aires"
+        android:textSize="20sp" />
 
     <ImageView
         android:id="@+id/weather_icon"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:adjustViewBounds="true"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:scaleType="fitXY"
+        android:background="@drawable/circle_background"
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/horizontal_middle"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/location" />
 
     <TextView
         android:id="@+id/weather_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Rainy"
+        tools:text="Rainy"
         android:textColor="@color/primary_text"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp"
         app:layout_constraintLeft_toLeftOf="@+id/weather_icon"
         app:layout_constraintRight_toRightOf="@+id/weather_icon"
         app:layout_constraintTop_toBottomOf="@+id/weather_icon" />
 
     <TextView
-        android:id="@+id/high_temperature"
+        android:id="@+id/temperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
-        android:text="19\u00b0"
+        tools:text="19\u00b0"
         android:textColor="@color/primary_text"
         android:textSize="72sp"
         app:layout_constraintBottom_toBottomOf="@+id/weather_icon"
@@ -67,11 +78,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
-        android:text="10\u00b0"
+        tools:text="10\u00b0"
         android:textColor="@color/secondary_text"
         android:textSize="36sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/weather_description"
-        app:layout_constraintLeft_toLeftOf="@+id/high_temperature"
-        app:layout_constraintRight_toRightOf="@+id/high_temperature" />
+        app:layout_constraintLeft_toLeftOf="@+id/temperature"
+        app:layout_constraintRight_toRightOf="@+id/temperature" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

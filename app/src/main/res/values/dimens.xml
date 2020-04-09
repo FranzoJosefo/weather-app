@@ -2,7 +2,7 @@
 
 <resources>
     <dimen name="default_horizontal_padding">32dp</dimen>
-    <dimen name="default_vertical_padding">16dp</dimen>
+    <dimen name="default_vertical_padding">32dp</dimen>
 
     <dimen name="list_icon">40dp</dimen>
 
