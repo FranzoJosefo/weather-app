@@ -8,7 +8,7 @@
     android:layout_height="wrap_content"
     android:paddingStart="@dimen/default_horizontal_padding"
     android:paddingLeft="@dimen/default_horizontal_padding"
-    android:paddingTop="@dimen/default_vertical_padding"
+    android:paddingTop="16dp"
     android:paddingEnd="@dimen/default_horizontal_padding"
     android:paddingRight="@dimen/default_horizontal_padding">
 
