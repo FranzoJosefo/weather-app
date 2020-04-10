@@ -11,6 +11,7 @@ import com.franciscoolivero.android.weatherapp.R;
 import com.franciscoolivero.android.weatherapp.model.BaseWeatherResponseModel;
 import com.franciscoolivero.android.weatherapp.model.CurrentWeatherModel;
 import com.franciscoolivero.android.weatherapp.model.LocationModel;
+import com.franciscoolivero.android.weatherapp.utils.DateUtils;
 import com.franciscoolivero.android.weatherapp.utils.ImageUtils;
 import com.franciscoolivero.android.weatherapp.viewmodel.WeatherViewModel;
 
@@ -42,6 +43,8 @@ public class CurrentWeatherFragment extends Fragment {
     TextView currentHumidity;
     @BindView(R.id.wind_measurement)
     TextView currentWindSpeed;
+
+    private static final String TAG = "CurrentWeatherFragment";
 
     private WeatherViewModel weatherViewModel;
 
@@ -98,8 +101,10 @@ public class CurrentWeatherFragment extends Fragment {
         currentHumidity.setText(getString(R.string.humidity_unit, currentWeatherModel.getHumidity()));
         currentPressure.setText(getString(R.string.pressure_unit, currentWeatherModel.getPressure()));
         currentWeatherDescription.setText(String.valueOf(currentWeatherModel.getBasicWeatherModelList().get(0).getWeatherCondition()));
+        currentWeatherDate.setText(DateUtils.getFormattedDateFromEpoch(currentWeatherModel.getCurrentTime(), getString(R.string.EEEE_MMMM_dd_pattern)));
         ImageUtils.loadImage(currentWeatherIcon,
                 getString(R.string.open_weather_image_url, currentWeatherModel.getBasicWeatherModelList().get(0).getWeatherIconCode()),
                 ImageUtils.getProgressDrawable(currentWeatherIcon.getContext()));
+
     }
 }

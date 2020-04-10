@@ -19,4 +19,6 @@
 
     <string name="location_format">%1$s, %2$s</string>
 
+    <string name="EEEE_MMMM_dd_pattern">"EEEE, MMMM dd"</string>
+
 </resources>
