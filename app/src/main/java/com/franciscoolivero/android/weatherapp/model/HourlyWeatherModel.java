@@ -10,7 +10,7 @@ public class HourlyWeatherModel extends WeatherModel {
     @SerializedName("feels_like")
     private double realFeel;
 
-    public HourlyWeatherModel(int currentTime, double realFeel, List<BasicWeatherModel> basicWeatherModelList, int pressure, int humidity, float windSpeed, float temperature) {
+    public HourlyWeatherModel(long currentTime, double realFeel, List<BasicWeatherModel> basicWeatherModelList, int pressure, int humidity, float windSpeed, float temperature) {
         super(currentTime, basicWeatherModelList, pressure, humidity, windSpeed);
         this.temperature = temperature;
     }

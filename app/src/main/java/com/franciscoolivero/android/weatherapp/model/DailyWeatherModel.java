@@ -8,7 +8,7 @@ public class DailyWeatherModel extends WeatherModel {
     @SerializedName("temp")
     private DailyTempModel dailyTempModel;
 
-    public DailyWeatherModel(int currentTime, List<BasicWeatherModel> basicWeatherModelList, int pressure, int humidity, float windSpeed, DailyTempModel dailyTempModel) {
+    public DailyWeatherModel(long currentTime, List<BasicWeatherModel> basicWeatherModelList, int pressure, int humidity, float windSpeed, DailyTempModel dailyTempModel) {
         super(currentTime, basicWeatherModelList, pressure, humidity, windSpeed);
         this.dailyTempModel = dailyTempModel;
     }

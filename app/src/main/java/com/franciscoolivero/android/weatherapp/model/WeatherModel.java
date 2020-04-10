@@ -6,7 +6,7 @@ import java.util.List;
 
 public class WeatherModel {
     @SerializedName("dt")
-    private int currentTime;
+    private long currentTime;
     @SerializedName("weather")
     private List<BasicWeatherModel> basicWeatherModelList;
     @SerializedName("pressure")
@@ -16,7 +16,7 @@ public class WeatherModel {
     @SerializedName("wind_speed")
     private double windSpeed;
 
-    public WeatherModel(int currentTime, List<BasicWeatherModel> basicWeatherModelList, int pressure, int humidity, double windSpeed) {
+    public WeatherModel(long currentTime, List<BasicWeatherModel> basicWeatherModelList, int pressure, int humidity, double windSpeed) {
         this.currentTime = currentTime;
         this.basicWeatherModelList = basicWeatherModelList;
         this.pressure = pressure;
@@ -24,7 +24,7 @@ public class WeatherModel {
         this.windSpeed = windSpeed;
     }
 
-    public int getCurrentTime() {
+    public long getCurrentTime() {
         return currentTime;
     }
 
