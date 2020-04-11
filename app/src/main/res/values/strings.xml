@@ -1,24 +1,36 @@
 <resources>
+    <!--    App Name which displays in the toolbar-->
     <string name="app_name">Weather App</string>
 
+    <!--    Tab names-->
     <string name="daily_tab">Daily</string>
     <string name="today_tab">Today</string>
 
+    <!--    Labels used around the app-->
     <string name="humidity_label">Humidity</string>
     <string name="pressure_label">Pressure</string>
     <string name="real_feel_label">Real Feel</string>
     <string name="wind_label">Wind</string>
+    <string name="hourly_forecast_label">Hourly Forecast</string>
+    <string name="min_temperature_label">min</string>
+    <string name="max_temperature_label">max</string>
 
+    <!--    Unit and Formats-->
     <string name="temperature_unit">%1$.0f°</string>
-    <string name="temperature_real_feel_unit">%1$.1f°</string>
     <string name="pressure_unit">%1$d hPa</string>
     <string name="wind_speed_unit">%1$.1f km/h</string>
     <string name="humidity_unit">%1$d%%</string>
-
-    <string name="open_weather_image_url">http://openweathermap.org/img/wn/%1$s@2x.png</string>
-
     <string name="location_format">%1$s, %2$s</string>
 
+    <!--    Image URLs that may need some inline replacement-->
+    <string name="open_weather_image_url">http://openweathermap.org/img/wn/%1$s@2x.png</string>
+
+    <!--    DateTime Patterns-->
     <string name="EEEE_MMMM_dd_pattern">"EEEE, MMMM dd"</string>
+    <string name="hh_pattern">"hh:\'00' a"</string>
+
+    <!--    Empty States / Dialogs strings-->
+    <string name="current_weather_loading_error_title">Something went wrong</string>
+    <string name="current_weather_loading_error_message">Swipe to refresh and try again!</string>
 
 </resources>
