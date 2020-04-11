@@ -1,43 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:scrollbars="vertical">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <include
-            android:id="@+id/primary_info"
-            layout="@layout/weather_primary_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:id="@+id/weather_layout_container"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible">
 
-        <View style="@style/dividerLine" />
+            <include
+                android:id="@+id/primary_info"
+                layout="@layout/weather_primary_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-        <include
-            android:id="@+id/extra_details"
-            layout="@layout/weather_secondary_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <View style="@style/DividerLine" />
 
-        <View style="@style/dividerLine" />
+            <include
+                android:id="@+id/extra_details"
+                layout="@layout/weather_secondary_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-        <TextView
+            <View style="@style/DividerLine" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:text="@string/hourly_forecast_label"
+                android:textSize="18sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/hourly_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/current_weather_progress_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hourly Forecast"
-            android:textSize="16sp"
-            android:layout_margin="16dp"
-            android:layout_gravity="center"/>
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
 
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content" />-->
+        <include
+            android:id="@+id/current_weather_error_layout_container"
+            layout="@layout/error_message_default" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

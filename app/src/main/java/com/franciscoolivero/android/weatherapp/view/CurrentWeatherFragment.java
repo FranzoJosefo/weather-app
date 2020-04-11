@@ -5,21 +5,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.franciscoolivero.android.weatherapp.R;
-import com.franciscoolivero.android.weatherapp.model.BaseWeatherResponseModel;
 import com.franciscoolivero.android.weatherapp.model.CurrentWeatherModel;
 import com.franciscoolivero.android.weatherapp.model.LocationModel;
 import com.franciscoolivero.android.weatherapp.utils.DateUtils;
 import com.franciscoolivero.android.weatherapp.utils.ImageUtils;
 import com.franciscoolivero.android.weatherapp.viewmodel.WeatherViewModel;
 
+import java.util.ArrayList;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -27,26 +32,47 @@ public class CurrentWeatherFragment extends Fragment {
 
     @BindView(R.id.date)
     TextView currentWeatherDate;
+
     @BindView(R.id.location)
     TextView location;
+
     @BindView(R.id.weather_icon)
     ImageView currentWeatherIcon;
+
     @BindView(R.id.weather_description)
     TextView currentWeatherDescription;
+
     @BindView(R.id.temperature)
     TextView currentTemperature;
+
     @BindView(R.id.real_feel)
     TextView currentRealFeel;
+
     @BindView(R.id.pressure)
     TextView currentPressure;
+
     @BindView(R.id.humidity)
     TextView currentHumidity;
+
     @BindView(R.id.wind_measurement)
     TextView currentWindSpeed;
 
-    private static final String TAG = "CurrentWeatherFragment";
+    @BindView(R.id.current_weather_error_layout_container)
+    LinearLayout loadingErrorContainer;
 
+    @BindView(R.id.current_weather_progress_spinner)
+    ProgressBar loadingSpinner;
+
+    @BindView(R.id.weather_layout_container)
+    LinearLayout weatherLayoutContainer;
+
+    @BindView(R.id.hourly_recycler_view)
+    RecyclerView hourlyRecyclerView;
+
+    private static final String TAG = "CurrentWeatherFragment";
     private WeatherViewModel weatherViewModel;
+    private HourlyRecyclerAdapter hourlyRecyclerAdapter = new HourlyRecyclerAdapter(new ArrayList<>());
+
 
     public static CurrentWeatherFragment newInstance() {
         return new CurrentWeatherFragment();
@@ -55,7 +81,6 @@ public class CurrentWeatherFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        weatherViewModel = ViewModelProviders.of(this).get(WeatherViewModel.class);
     }
 
     @Nullable
@@ -69,25 +94,49 @@ public class CurrentWeatherFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        weatherViewModel = ViewModelProviders.of(requireActivity()).get(WeatherViewModel.class);
         setupObserversViewModel();
-        weatherViewModel = ViewModelProviders.of(this).get(WeatherViewModel.class);
+        setupRecyclerView();
         weatherViewModel.fetchLocationAndWeatherData(false);
     }
 
-    private void setupObserversViewModel() {
-        weatherViewModel.baseWeatherResponseMutableLiveData.observe(this, new Observer<BaseWeatherResponseModel>() {
+    private void setupRecyclerView() {
+        hourlyRecyclerView.setHasFixedSize(true);
+        hourlyRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()) {
             @Override
-            public void onChanged(BaseWeatherResponseModel baseWeatherResponseModel) {
-                updateCurrentWeatherInfoUI(baseWeatherResponseModel.getCurrentWeatherModel());
+            public boolean canScrollVertically() {
+                return false;
             }
         });
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(hourlyRecyclerView.getContext(), DividerItemDecoration.VERTICAL);
+        hourlyRecyclerView.addItemDecoration(dividerItemDecoration);
+        hourlyRecyclerView.setAdapter(hourlyRecyclerAdapter);
+    }
 
-        weatherViewModel.locationModelMutableLiveData.observe(this, new Observer<LocationModel>() {
-            @Override
-            public void onChanged(LocationModel locationModel) {
-                updateLocationUI(locationModel);
+    private void setupObserversViewModel() {
+        weatherViewModel.baseWeatherResponseMutableLiveData.observe(this, baseWeatherResponseModel -> {
+            updateCurrentWeatherInfoUI(baseWeatherResponseModel.getCurrentWeatherModel());
+            hourlyRecyclerAdapter.updateHourlyForecast(baseWeatherResponseModel.getHourlyWeatherModelList());
+        });
+        weatherViewModel.locationModelMutableLiveData.observe(this, this::updateLocationUI);
+        weatherViewModel.isLoadingMutableLiveData.observe(this, this::setLoadingSpinnerVisibility);
+        weatherViewModel.errorLoadingMutableLiveData.observe(this, isError -> {
+            if(isError!=null) {
+                setErrorStateVisibility(isError);
             }
         });
+    }
+
+    private void setErrorStateVisibility(boolean show) {
+        loadingErrorContainer.setVisibility(show ? View.VISIBLE : View.GONE);
+        weatherLayoutContainer.setVisibility(show ? View.GONE : View.VISIBLE);
+    }
+
+    private void setLoadingSpinnerVisibility(boolean show) {
+        loadingSpinner.setVisibility(show ? View.VISIBLE : View.GONE);
+        if (show) {
+            weatherLayoutContainer.setVisibility(View.GONE);
+        }
     }
 
     private void updateLocationUI(LocationModel locationModel) {
