@@ -96,15 +96,14 @@ public class CurrentWeatherFragment extends Fragment {
 
     private void updateCurrentWeatherInfoUI(CurrentWeatherModel currentWeatherModel) {
         currentTemperature.setText(getString(R.string.temperature_unit, currentWeatherModel.getTemperature()));
-        currentRealFeel.setText(getString(R.string.temperature_real_feel_unit, currentWeatherModel.getRealFeel()));
+        currentRealFeel.setText(getString(R.string.temperature_unit, currentWeatherModel.getRealFeel()));
         currentWindSpeed.setText(getString(R.string.wind_speed_unit, currentWeatherModel.getWindSpeed()));
         currentHumidity.setText(getString(R.string.humidity_unit, currentWeatherModel.getHumidity()));
         currentPressure.setText(getString(R.string.pressure_unit, currentWeatherModel.getPressure()));
-        currentWeatherDescription.setText(String.valueOf(currentWeatherModel.getBasicWeatherModelList().get(0).getWeatherCondition()));
+        currentWeatherDescription.setText(currentWeatherModel.getBasicWeatherModelList().get(0).getWeatherDescriptionCapitalized());
         currentWeatherDate.setText(DateUtils.getFormattedDateFromEpoch(currentWeatherModel.getCurrentTime(), getString(R.string.EEEE_MMMM_dd_pattern)));
         ImageUtils.loadImage(currentWeatherIcon,
                 getString(R.string.open_weather_image_url, currentWeatherModel.getBasicWeatherModelList().get(0).getWeatherIconCode()),
                 ImageUtils.getProgressDrawable(currentWeatherIcon.getContext()));
-
     }
 }
