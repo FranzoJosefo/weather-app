@@ -12,11 +12,11 @@ public class BaseWeatherResponseModel {
     @SerializedName("current")
     private CurrentWeatherModel currentWeatherModel;
     @SerializedName("hourly")
-    private List<WeatherModel> hourlyWeatherModelList;
+    private List<HourlyWeatherModel> hourlyWeatherModelList;
     @SerializedName("daily")
     private List<DailyWeatherModel> dailyWeatherModelList;
 
-    public BaseWeatherResponseModel(float latitude, float longitude, CurrentWeatherModel currentWeatherModel, List<WeatherModel> hourlyWeatherModelList, List<DailyWeatherModel> dailyWeatherModelList) {
+    public BaseWeatherResponseModel(float latitude, float longitude, CurrentWeatherModel currentWeatherModel, List<HourlyWeatherModel> hourlyWeatherModelList, List<DailyWeatherModel> dailyWeatherModelList) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.currentWeatherModel = currentWeatherModel;
@@ -36,7 +36,7 @@ public class BaseWeatherResponseModel {
         return currentWeatherModel;
     }
 
-    public List<WeatherModel> getHourlyWeatherModelList() {
+    public List<HourlyWeatherModel> getHourlyWeatherModelList() {
         return hourlyWeatherModelList;
     }
 

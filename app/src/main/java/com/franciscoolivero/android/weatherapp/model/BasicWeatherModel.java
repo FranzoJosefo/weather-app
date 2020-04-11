@@ -31,6 +31,11 @@ public class BasicWeatherModel {
         return weatherDescription;
     }
 
+    public String getWeatherDescriptionCapitalized() {
+        String weatherDescription = getWeatherDescription();
+        return weatherDescription.substring(0, 1).toUpperCase() + weatherDescription.substring(1).toLowerCase();
+    }
+
     public String getWeatherIconCode() {
         return weatherIconCode;
     }
