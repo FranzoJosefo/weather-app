@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="?android:attr/selectableItemBackground"
+    android:minHeight="?android:attr/listPreferredItemHeight"
+    android:paddingLeft="@dimen/weather_list_item_padding_horizontal"
+    android:paddingTop="@dimen/weather_list_item_padding_vertical"
+    android:paddingRight="@dimen/weather_list_item_padding_horizontal"
+    android:paddingBottom="@dimen/weather_list_item_padding_vertical">
+
+    <ImageView
+        android:id="@+id/daily_weather_icon"
+        android:layout_width="@dimen/list_icon"
+        android:layout_height="@dimen/list_icon"
+        app:layout_constraintBottom_toTopOf="@id/guideline"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline"
+        tools:src="@mipmap/ic_launcher_round" />
+
+    <TextView
+        android:id="@+id/daily_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/weather_list_item_date_start_margin"
+        android:layout_marginLeft="@dimen/weather_list_item_date_left_margin"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        app:layout_constraintBottom_toTopOf="@id/guideline"
+        app:layout_constraintLeft_toRightOf="@id/daily_weather_icon"
+        tools:text="Monday, April 03" />
+
+    <TextView
+        android:id="@+id/daily_weather_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/secondary_text"
+        app:layout_constraintLeft_toLeftOf="@id/daily_date"
+        app:layout_constraintTop_toBottomOf="@id/guideline"
+        tools:text="Rainy" />
+
+    <TextView
+        android:id="@+id/daily_high_temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/forecast_temperature_space"
+        android:layout_marginRight="@dimen/forecast_temperature_space"
+        android:fontFamily="sans-serif-light"
+        android:includeFontPadding="false"
+        android:textColor="@color/primary_text"
+        android:textSize="@dimen/forecast_text_size"
+        app:layout_constraintBottom_toBottomOf="@id/guideline"
+        app:layout_constraintRight_toLeftOf="@id/daily_low_temperature"
+        app:layout_constraintTop_toTopOf="@id/guideline"
+        tools:text="19\u00b0" />
+
+    <TextView
+        style="@style/TempLabelStyle"
+        android:text="@string/max_temperature_label"
+        app:layout_constraintEnd_toEndOf="@id/daily_high_temperature"
+        app:layout_constraintStart_toStartOf="@id/daily_high_temperature"
+        app:layout_constraintTop_toBottomOf="@id/daily_high_temperature" />
+
+    <TextView
+        android:id="@+id/daily_low_temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:gravity="end"
+        android:includeFontPadding="false"
+        android:textSize="@dimen/forecast_text_size"
+        app:layout_constraintBottom_toBottomOf="@id/guideline"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline"
+        tools:text="10\u00b0" />
+
+    <TextView
+        style="@style/TempLabelStyle"
+        android:text="@string/min_temperature_label"
+        app:layout_constraintEnd_toEndOf="@id/daily_low_temperature"
+        app:layout_constraintStart_toStartOf="@id/daily_low_temperature"
+        app:layout_constraintTop_toBottomOf="@id/daily_low_temperature" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
