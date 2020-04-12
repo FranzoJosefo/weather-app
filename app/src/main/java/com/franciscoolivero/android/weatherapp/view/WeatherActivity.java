@@ -1,8 +1,10 @@
 package com.franciscoolivero.android.weatherapp.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.franciscoolivero.android.weatherapp.R;
 import com.franciscoolivero.android.weatherapp.viewmodel.WeatherViewModel;
@@ -72,7 +74,7 @@ public class WeatherActivity extends AppCompatActivity {
 
     private void setupSwipeRefreshListener() {
         swipeRefreshLayout.setOnRefreshListener(() -> {
-            weatherViewModel.fetchLocationAndWeatherData(true);
+            weatherViewModel.fetchLocationAndWeatherData(true, this.getApplicationContext());
             swipeRefreshLayout.setRefreshing(false);
         });
     }

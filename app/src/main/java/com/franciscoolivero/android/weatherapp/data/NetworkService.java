@@ -2,7 +2,8 @@ package com.franciscoolivero.android.weatherapp.data;
 
 import com.franciscoolivero.android.weatherapp.di.DaggerApiComponent;
 import com.franciscoolivero.android.weatherapp.model.BaseWeatherResponseModel;
-import com.franciscoolivero.android.weatherapp.model.LocationModel;
+import com.franciscoolivero.android.weatherapp.model.CityLocationModel;
+import com.franciscoolivero.android.weatherapp.model.CurrentLocationModel;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -19,6 +20,9 @@ public class NetworkService {
     @Inject
     public IpApiService ipApiService;
 
+    @Inject
+    public LocationIQService locationIQService;
+
     private NetworkService() {
         DaggerApiComponent.create().inject(this);
     }
@@ -30,12 +34,16 @@ public class NetworkService {
         return instance;
     }
 
-    public Single<LocationModel> getCurrentLocation() {
+    public Single<CurrentLocationModel> getCurrentLocation() {
         return ipApiService.getCurrentLocation();
     }
 
     public Single<BaseWeatherResponseModel> getWeatherData(String lat, String lon) {
         return weatherMapApiService.getWeatherData(lat, lon, OpenWeatherMapApiService.UNIT_METRIC, OpenWeatherMapApiService.OPEN_WEATHER_API_KEY);
+    }
+
+    public Single<CityLocationModel> getCityLocation(String cityName) {
+        return locationIQService.getCityLocation(LocationIQService.LOCATION_IQ_API_KEY, cityName, LocationIQService.FORMAT);
     }
 
 }

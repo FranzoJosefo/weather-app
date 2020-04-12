@@ -2,7 +2,7 @@ package com.franciscoolivero.android.weatherapp.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class LocationModel {
+public class CurrentLocationModel {
     @SerializedName("status")
     private String responseStatus;
     @SerializedName("lat")
@@ -16,7 +16,7 @@ public class LocationModel {
     @SerializedName("city")
     private String cityName;
 
-    public LocationModel(String responseStatus, Double currentLatitude, Double currentLongitude, String countryName, String regionName, String cityName) {
+    public CurrentLocationModel(String responseStatus, Double currentLatitude, Double currentLongitude, String countryName, String regionName, String cityName) {
         this.responseStatus = responseStatus;
         this.currentLatitude = currentLatitude;
         this.currentLongitude = currentLongitude;

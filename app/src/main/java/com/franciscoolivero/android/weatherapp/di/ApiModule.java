@@ -1,6 +1,7 @@
 package com.franciscoolivero.android.weatherapp.di;
 
 import com.franciscoolivero.android.weatherapp.data.IpApiService;
+import com.franciscoolivero.android.weatherapp.data.LocationIQService;
 import com.franciscoolivero.android.weatherapp.data.NetworkService;
 import com.franciscoolivero.android.weatherapp.data.OpenWeatherMapApiService;
 
@@ -16,6 +17,7 @@ public class ApiModule {
 
     private static final String BASE_URL_OPEN_WEATHER_MAP = "https://api.openweathermap.org";
     private static final String BASE_URL_IP_API = "http://ip-api.com";
+    private static final String BASE_URL_LOCATION_IQ = "https://eu.locationiq.com";
 
     @Provides
     public OpenWeatherMapApiService provideWeatherService() {
@@ -35,6 +37,16 @@ public class ApiModule {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
                 .create(IpApiService.class);
+    }
+
+    @Provides
+    public LocationIQService provideLocationIQService() {
+        return new Retrofit.Builder()
+                .baseUrl(BASE_URL_LOCATION_IQ)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build()
+                .create(LocationIQService.class);
     }
 
     @Provides

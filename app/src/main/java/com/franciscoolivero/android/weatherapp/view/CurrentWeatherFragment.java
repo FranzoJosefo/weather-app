@@ -10,8 +10,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.franciscoolivero.android.weatherapp.R;
+import com.franciscoolivero.android.weatherapp.model.CityLocationModel;
+import com.franciscoolivero.android.weatherapp.model.CurrentLocationModel;
 import com.franciscoolivero.android.weatherapp.model.CurrentWeatherModel;
-import com.franciscoolivero.android.weatherapp.model.LocationModel;
 import com.franciscoolivero.android.weatherapp.utils.DateUtils;
 import com.franciscoolivero.android.weatherapp.utils.ImageUtils;
 import com.franciscoolivero.android.weatherapp.viewmodel.WeatherViewModel;
@@ -97,7 +98,7 @@ public class CurrentWeatherFragment extends Fragment {
         weatherViewModel = ViewModelProviders.of(requireActivity()).get(WeatherViewModel.class);
         setupObserversViewModel();
         setupRecyclerView();
-        weatherViewModel.fetchLocationAndWeatherData(false);
+        weatherViewModel.fetchLocationAndWeatherData(false, getContext());
     }
 
     private void setupRecyclerView() {
@@ -118,7 +119,8 @@ public class CurrentWeatherFragment extends Fragment {
             updateCurrentWeatherInfoUI(baseWeatherResponseModel.getCurrentWeatherModel());
             hourlyRecyclerAdapter.updateHourlyForecast(baseWeatherResponseModel.getHourlyWeatherModelList());
         });
-        weatherViewModel.locationModelMutableLiveData.observe(this, this::updateLocationUI);
+        weatherViewModel.currentLocationModelMutableLiveData.observe(this, this::updateCurrentLocationUI);
+        weatherViewModel.cityLocationModelMutableLiveData.observe(this, this::updateCityLocationUI);
         weatherViewModel.isLoadingMutableLiveData.observe(this, this::setLoadingSpinnerVisibility);
         weatherViewModel.errorLoadingMutableLiveData.observe(this, isError -> {
             if(isError!=null) {
@@ -139,8 +141,12 @@ public class CurrentWeatherFragment extends Fragment {
         }
     }
 
-    private void updateLocationUI(LocationModel locationModel) {
-        location.setText(getString(R.string.location_format, locationModel.getCityName(), locationModel.getRegionName()));
+    private void updateCurrentLocationUI(CurrentLocationModel currentLocationModel) {
+        location.setText(getString(R.string.location_format, currentLocationModel.getCityName(), currentLocationModel.getRegionName()));
+    }
+
+    private void updateCityLocationUI(CityLocationModel cityLocationModel) {
+        location.setText(cityLocationModel.getDisplayName());
     }
 
     private void updateCurrentWeatherInfoUI(CurrentWeatherModel currentWeatherModel) {

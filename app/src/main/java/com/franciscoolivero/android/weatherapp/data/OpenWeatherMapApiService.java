@@ -12,6 +12,9 @@ public interface OpenWeatherMapApiService {
     String UNIT_METRIC = "metric";
 
     @GET("data/2.5/onecall")
-    Single<BaseWeatherResponseModel> getWeatherData(@Query(value = "lat", encoded = true) String lat, @Query(value = "lon", encoded = true) String lon, @Query(value = "units", encoded = true) String units, @Query(value = "APPID", encoded = true) String apiKey);
+    Single<BaseWeatherResponseModel> getWeatherData(@Query(value = "lat", encoded = true) String lat,
+                                                    @Query(value = "lon", encoded = true) String lon,
+                                                    @Query(value = "units", encoded = true) String units,
+                                                    @Query(value = "APPID", encoded = true) String apiKey);
 
 }
