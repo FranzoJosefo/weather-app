@@ -1,6 +1,8 @@
 package com.franciscoolivero.android.weatherapp.view;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import com.franciscoolivero.android.weatherapp.R;
 import com.franciscoolivero.android.weatherapp.viewmodel.WeatherViewModel;
@@ -47,6 +49,25 @@ public class WeatherActivity extends AppCompatActivity {
         weatherViewModel = ViewModelProviders.of(this).get(WeatherViewModel.class);
         setupTabLayoutWithViewPager();
         setupSwipeRefreshListener();
+        setSupportActionBar(toolbar);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.weather_options_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.more) {
+            Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            startActivity(settingsIntent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void setupSwipeRefreshListener() {

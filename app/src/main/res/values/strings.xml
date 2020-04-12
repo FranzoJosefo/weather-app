@@ -15,6 +15,9 @@
     <string name="min_temperature_label">min</string>
     <string name="max_temperature_label">max</string>
 
+    <!--    Title for Menu-->
+    <string name="menu_title_settings">Settings</string>
+
     <!--    Unit and Formats-->
     <string name="temperature_unit">%1$.0f°</string>
     <string name="pressure_unit">%1$d hPa</string>
@@ -32,5 +35,30 @@
     <!--    Empty States / Dialogs strings-->
     <string name="current_weather_loading_error_title">Something went wrong</string>
     <string name="current_weather_loading_error_message">Swipe to refresh and try again!</string>
+
+    <!-- Strings For Select Location Preference -->
+    <string name="location_preference_key">select_location</string>
+    <string name="title_preference">Set location for weather info</string>
+    <string name="dialog_title_preference">Select Location</string>
+    <string name="settings_select_location_default" translatable="false">@string/settings_location_current_value</string>
+
+    <string name="settings_location_current_label">Current location</string>
+    <string name="settings_location_current_value">current</string>
+
+    <string name="settings_location_rome_label">Rome</string>
+    <string name="settings_location_rome_value">rome</string>
+
+    <string name="settings_location_berlin_label">Berlin</string>
+    <string name="settings_location_berlin_value">berlin</string>
+
+    <string name="settings_location_london_label">London</string>
+    <string name="settings_location_london_value">london</string>
+
+    <string name="settings_location_dublin_label">Dublin</string>
+    <string name="settings_location_dublin_value">dublin</string>
+
+    <string name="settings_location_madrid_label">Madrid</string>
+    <string name="settings_location_madrid_value">madrid</string>
+
 
 </resources>

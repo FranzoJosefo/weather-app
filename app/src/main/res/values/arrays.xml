@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="entries">
+        <item>@string/settings_select_location_default</item>
+        <item>@string/settings_location_berlin_label</item>
+        <item>@string/settings_location_london_label</item>
+        <item>@string/settings_location_madrid_label</item>
+        <item>@string/settings_location_dublin_label</item>
+        <item>@string/settings_location_rome_label</item>
+    </string-array>
+
+    <string-array name="entry_values">
+        <item>@string/settings_location_current_value</item>
+        <item>@string/settings_location_berlin_value</item>
+        <item>@string/settings_location_london_value</item>
+        <item>@string/settings_location_madrid_value</item>
+        <item>@string/settings_location_dublin_value</item>
+        <item>@string/settings_location_rome_value</item>
+    </string-array>
+</resources>

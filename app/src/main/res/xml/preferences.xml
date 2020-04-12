@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:defaultValue="@string/settings_select_location_default"
+        android:dialogTitle="@string/dialog_title_preference"
+        android:entries="@array/entries"
+        android:entryValues="@array/entry_values"
+        android:key="@string/location_preference_key"
+        android:title="@string/title_preference" />
+</PreferenceScreen>
