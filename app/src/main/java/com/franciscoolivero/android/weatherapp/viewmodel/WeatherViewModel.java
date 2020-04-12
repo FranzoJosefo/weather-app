@@ -11,6 +11,8 @@ import com.franciscoolivero.android.weatherapp.model.BaseWeatherResponseModel;
 import com.franciscoolivero.android.weatherapp.model.CityLocationModel;
 import com.franciscoolivero.android.weatherapp.model.CurrentLocationModel;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import androidx.lifecycle.MutableLiveData;
@@ -61,10 +63,10 @@ public class WeatherViewModel extends ViewModel {
                 networkService.getCityLocation(cityName)
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableSingleObserver<CityLocationModel>() {
+                        .subscribeWith(new DisposableSingleObserver<List<CityLocationModel>>() {
                             @Override
-                            public void onSuccess(CityLocationModel cityLocationModel) {
-                                cityLocationModelMutableLiveData.setValue(cityLocationModel);
+                            public void onSuccess(List<CityLocationModel> cityLocationModelList) {
+                                cityLocationModelMutableLiveData.setValue(cityLocationModelList.get(0));
                                 if (cityLocationModelMutableLiveData.getValue() != null) {
                                     fetchWeatherDataFromService(String.valueOf(cityLocationModelMutableLiveData.getValue().getCityLatitude()), String.valueOf(cityLocationModelMutableLiveData.getValue().getCityLongitude()));
                                 } else {

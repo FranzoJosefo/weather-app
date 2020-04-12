@@ -17,7 +17,7 @@ public class ApiModule {
 
     private static final String BASE_URL_OPEN_WEATHER_MAP = "https://api.openweathermap.org";
     private static final String BASE_URL_IP_API = "http://ip-api.com";
-    private static final String BASE_URL_LOCATION_IQ = "https://eu.locationiq.com";
+    private static final String BASE_URL_LOCATION_IQ = "https://eu1.locationiq.com";
 
     @Provides
     public OpenWeatherMapApiService provideWeatherService() {

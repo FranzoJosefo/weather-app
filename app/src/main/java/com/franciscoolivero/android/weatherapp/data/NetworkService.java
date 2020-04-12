@@ -5,6 +5,8 @@ import com.franciscoolivero.android.weatherapp.model.BaseWeatherResponseModel;
 import com.franciscoolivero.android.weatherapp.model.CityLocationModel;
 import com.franciscoolivero.android.weatherapp.model.CurrentLocationModel;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -42,7 +44,7 @@ public class NetworkService {
         return weatherMapApiService.getWeatherData(lat, lon, OpenWeatherMapApiService.UNIT_METRIC, OpenWeatherMapApiService.OPEN_WEATHER_API_KEY);
     }
 
-    public Single<CityLocationModel> getCityLocation(String cityName) {
+    public Single<List<CityLocationModel>> getCityLocation(String cityName) {
         return locationIQService.getCityLocation(LocationIQService.LOCATION_IQ_API_KEY, cityName, LocationIQService.FORMAT);
     }
 

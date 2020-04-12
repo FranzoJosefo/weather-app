@@ -2,6 +2,8 @@ package com.franciscoolivero.android.weatherapp.data;
 
 import com.franciscoolivero.android.weatherapp.model.CityLocationModel;
 
+import java.util.List;
+
 import io.reactivex.Single;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -12,7 +14,7 @@ public interface LocationIQService {
     String FORMAT = "json";
 
     @GET("v1/search.php")
-    Single<CityLocationModel> getCityLocation(@Query(value = "key", encoded = true) String apiKey,
-                                              @Query(value = "q", encoded = true) String cityName,
-                                              @Query(value = "format", encoded = true) String format);
+    Single<List<CityLocationModel>> getCityLocation(@Query(value = "key", encoded = true) String apiKey,
+                                                   @Query(value = "q", encoded = true) String cityName,
+                                                   @Query(value = "format", encoded = true) String format);
 }
