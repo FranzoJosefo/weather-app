@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="entries">
-        <item>@string/settings_select_location_default</item>
+        <item>@string/settings_location_current_label</item>
         <item>@string/settings_location_berlin_label</item>
         <item>@string/settings_location_london_label</item>
         <item>@string/settings_location_madrid_label</item>
