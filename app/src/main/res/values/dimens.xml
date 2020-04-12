@@ -13,7 +13,7 @@
     <dimen name="today_forecast_list_item_vertical_padding">16dp</dimen>
     <dimen name="weather_list_item_icon_margin_right">24dp</dimen>
     <dimen name="weather_list_item_icon_margin_end">@dimen/weather_list_item_icon_margin_right</dimen>
-    <dimen name="weather_list_item_padding_horizontal">16dp</dimen>
+    <dimen name="weather_list_item_padding_horizontal">20dp</dimen>
     <dimen name="weather_list_item_high_temperature_margin">12dp</dimen>
     <dimen name="weather_list_item_padding_vertical">12dp</dimen>
     <dimen name="weather_list_item_low_temperature_text_view_size">48dp</dimen>

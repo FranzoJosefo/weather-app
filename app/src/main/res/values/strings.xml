@@ -10,6 +10,7 @@
     <string name="humidity_label">Humidity</string>
     <string name="pressure_label">Pressure</string>
     <string name="real_feel_label">Real Feel</string>
+    <string name="real_feel_short_label">Feels</string>
     <string name="wind_label">Wind</string>
     <string name="hourly_forecast_label">Hourly Forecast</string>
     <string name="min_temperature_label">min</string>

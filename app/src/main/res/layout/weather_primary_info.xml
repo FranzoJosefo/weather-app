@@ -18,29 +18,33 @@
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Saturday, September 24"
         android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Saturday, September 24" />
 
     <TextView
         android:id="@+id/location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:gravity="center"
-        tools:text="Olivos, Buenos Aires"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/date" />
+        app:layout_constraintTop_toBottomOf="@id/date"
+        tools:text="Olivos, Buenos Aires" />
 
     <ImageView
         android:id="@+id/weather_icon"
         android:layout_width="96dp"
         android:layout_height="96dp"
-        android:scaleType="fitXY"
         android:background="@drawable/circle_background"
+        android:scaleType="fitXY"
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -64,24 +68,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
-        tools:text="19\u00b0"
         android:textColor="@color/primary_text"
         android:textSize="72sp"
         app:layout_constraintBottom_toBottomOf="@+id/weather_icon"
         app:layout_constraintLeft_toLeftOf="@+id/horizontal_middle"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/weather_icon" />
+        app:layout_constraintTop_toTopOf="@+id/weather_icon"
+        tools:text="19\u00b0" />
 
     <TextView
         android:id="@+id/low_temperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
-        tools:text="10\u00b0"
         android:textColor="@color/secondary_text"
         android:textSize="36sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/weather_description"
         app:layout_constraintLeft_toLeftOf="@+id/temperature"
-        app:layout_constraintRight_toRightOf="@+id/temperature" />
+        app:layout_constraintRight_toRightOf="@+id/temperature"
+        tools:text="10\u00b0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

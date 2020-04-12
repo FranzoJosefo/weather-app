@@ -72,7 +72,7 @@
     <TextView
         android:id="@+id/real_feel_label"
         style="@style/TempLabelStyle"
-        android:text="@string/real_feel_label"
+        android:text="@string/real_feel_short_label"
         app:layout_constraintEnd_toEndOf="@id/hourly_real_feel"
         app:layout_constraintStart_toStartOf="@id/hourly_real_feel"
         app:layout_constraintTop_toBottomOf="@id/hourly_real_feel" />
