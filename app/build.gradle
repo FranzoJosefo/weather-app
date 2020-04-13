@@ -33,8 +33,6 @@ def rxJavaVersion = '2.1.1'
 def daggerVersion = '2.14.1'
 def mockitoVersion = '2.11.0'
 def picassoVersion = '2.71828'
-def dartVersion = '2.0.1'
-def hensonVersion = '2.0.1'
 def kotlin_version = '1.3.71'
 
 dependencies {
@@ -58,12 +56,6 @@ dependencies {
 
     implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
     implementation "io.reactivex.rxjava2:rxandroid:$rxJavaVersion"
-
-    implementation "com.f2prateek.dart:dart:$dartVersion"
-    annotationProcessor "com.f2prateek.dart:dart-processor:$dartVersion"
-
-    implementation "com.f2prateek.dart:henson:$hensonVersion"
-    annotationProcessor "com.f2prateek.dart:henson-processor:$hensonVersion"
 
     implementation "com.squareup.picasso:picasso:$picassoVersion"
 
