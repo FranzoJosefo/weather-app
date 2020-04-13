@@ -5,45 +5,18 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.lifecycle.ViewModelProviders
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import androidx.viewpager2.widget.ViewPager2
-import butterknife.BindView
 import butterknife.ButterKnife
 import com.franciscoolivero.android.weatherapp.R
 import com.franciscoolivero.android.weatherapp.viewmodel.WeatherViewModel
-import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.android.material.tabs.TabLayoutMediator.TabConfigurationStrategy
+import kotlinx.android.synthetic.main.activity_weather.*
 
 class WeatherActivity : AppCompatActivity() {
-    @JvmField
-    @BindView(R.id.coordinator_layout)
-    var coordinatorLayout: CoordinatorLayout? = null
+    private lateinit var weatherViewModel: WeatherViewModel
 
-    @JvmField
-    @BindView(R.id.weather_tabs_layout)
-    var tabLayout: TabLayout? = null
-
-    @JvmField
-    @BindView(R.id.weather_toolbar)
-    var toolbar: Toolbar? = null
-
-    @JvmField
-    @BindView(R.id.weather_appbar)
-    var appBarLayout: AppBarLayout? = null
-
-    @JvmField
-    @BindView(R.id.weather_view_pager)
-    var viewPager: ViewPager2? = null
-
-    @JvmField
-    @BindView(R.id.swipe_refresh_layout)
-    var swipeRefreshLayout: SwipeRefreshLayout? = null
-    private var weatherViewModel: WeatherViewModel? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weather)
@@ -51,7 +24,7 @@ class WeatherActivity : AppCompatActivity() {
         weatherViewModel = ViewModelProviders.of(this).get(WeatherViewModel::class.java)
         setupTabLayoutWithViewPager()
         setupSwipeRefreshListener()
-        setSupportActionBar(toolbar)
+        setSupportActionBar(weather_toolbar)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -71,17 +44,17 @@ class WeatherActivity : AppCompatActivity() {
     }
 
     private fun setupSwipeRefreshListener() {
-        swipeRefreshLayout!!.setOnRefreshListener {
-            weatherViewModel!!.fetchLocationAndWeatherData(true, this.applicationContext)
-            swipeRefreshLayout!!.isRefreshing = false
+        swipe_refresh_layout.setOnRefreshListener {
+            weatherViewModel.fetchLocationAndWeatherData(true, this.applicationContext)
+            swipe_refresh_layout.isRefreshing = false
         }
     }
 
     private fun setupTabLayoutWithViewPager() {
-        viewPager!!.isUserInputEnabled = false
+        weather_view_pager.isUserInputEnabled = false
         val tabsPagerAdapter = TabsPagerAdapter(this)
-        viewPager!!.adapter = tabsPagerAdapter
-        TabLayoutMediator(tabLayout!!, viewPager!!,
+        weather_view_pager.adapter = tabsPagerAdapter
+        TabLayoutMediator(weather_tabs_layout, weather_view_pager,
                 TabConfigurationStrategy { tab: TabLayout.Tab, position: Int ->
                     if (position == 0) {
                         tab.text = resources.getString(R.string.today_tab)
