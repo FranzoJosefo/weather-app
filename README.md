@@ -6,11 +6,6 @@ Current Weather information includes the present weather forecast, and also hour
 We also have a Daily tab which shows as per requirements up to 5 days weather forecast. If needed the code is easy to adapt in order to show even more days.
 Last but not least, the user can choose between Current Location based on IpAddress as explained above, or between 5 predefined cities from Europe.
 
-- Roadmap
-For future release it would be nice to add some animations, and also add detail Activity to see more information for the daily weather report,
-for that reason our model includes even more fields that aren't currently being used. That way we can take advantage of those in the future,
-by working on an enhancement. Also Caching of network calls will be included, together with notifications or alarms for weather alerts (such as storms).
-
 ## Installation & Project setup
 
 Make sure you have Android Studio latest version
@@ -91,13 +86,14 @@ Libraries used are:
 ## Build variants
 Use the Android Studio *Build Variants* button to choose between debug and release build types.
 
+## Roadmap
+For future release it would be nice to add some animations, and also add detail Activity to see more information for the daily weather report,
+for that reason our model includes even more fields that aren't currently being used. That way we can take advantage of those in the future,
+by working on an enhancement. Also Caching of network calls will be included, together with notifications or alarms for weather alerts (such as storms).
+
 ## How to test the project
 In order to test the project I mainly used Charles Proxy since the only thing I really needed to test was error handling states (Which are included in the app). Charles Proxy is a proxy tool really useful in order to monitor network calls, re-write requests and responses, ammong other cool features.
 Also you can find unit-tests under the `test` folder. Those can be executed with right click on the folder and `Run tests` option. 
-
-## Maintainers
-This project is mantained by:
-* [Francisco Olivero](http://github.com/franzojosefo)
 
 ## Version control workflow
 Since this is a solo-project I didn't find purpose on working on a `develop` branch and then creating PRs pointing to `master`
@@ -111,3 +107,7 @@ Then for release purposes merging `develop` into a `release-{version}` branch, a
 3. Commit your changes (git commit -m 'Add some feature')
 5. Push your branch (git push origin my-new-feature)
 6. Create a new Pull Request
+
+## Maintainers
+This project is mantained by:
+* [Francisco Olivero](http://github.com/franzojosefo)
