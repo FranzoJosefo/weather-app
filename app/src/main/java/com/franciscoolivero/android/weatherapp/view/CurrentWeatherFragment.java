@@ -1,6 +1,8 @@
 package com.franciscoolivero.android.weatherapp.view;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,7 +100,16 @@ public class CurrentWeatherFragment extends Fragment {
         weatherViewModel = ViewModelProviders.of(requireActivity()).get(WeatherViewModel.class);
         setupObserversViewModel();
         setupRecyclerView();
-        weatherViewModel.fetchLocationAndWeatherData(false, getContext());
+        weatherViewModel.fetchLocationAndWeatherData(false, getContext(), getLocationFromSharePreferences());
+    }
+
+    @NonNull
+    private String getLocationFromSharePreferences() {
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        return sharedPrefs.getString(
+                getString(R.string.location_preference_key),
+                getString(R.string.settings_select_location_default)
+        );
     }
 
     private void setupRecyclerView() {

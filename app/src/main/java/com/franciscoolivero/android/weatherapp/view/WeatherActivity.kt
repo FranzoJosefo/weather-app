@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import butterknife.ButterKnife
 import com.franciscoolivero.android.weatherapp.R
+import com.franciscoolivero.android.weatherapp.utils.MiscUtils
 import com.franciscoolivero.android.weatherapp.viewmodel.WeatherViewModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -45,7 +46,7 @@ class WeatherActivity : AppCompatActivity() {
 
     private fun setupSwipeRefreshListener() {
         swipe_refresh_layout.setOnRefreshListener {
-            weatherViewModel.fetchLocationAndWeatherData(true, this.applicationContext)
+            weatherViewModel.fetchLocationAndWeatherData(true, this.applicationContext, MiscUtils.getLocationFromSharePreferences(this.applicationContext))
             swipe_refresh_layout.isRefreshing = false
         }
     }

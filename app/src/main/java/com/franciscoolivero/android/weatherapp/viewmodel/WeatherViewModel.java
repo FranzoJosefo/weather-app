@@ -1,8 +1,6 @@
 package com.franciscoolivero.android.weatherapp.viewmodel;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 
 import com.franciscoolivero.android.weatherapp.R;
 import com.franciscoolivero.android.weatherapp.data.NetworkService;
@@ -40,18 +38,12 @@ public class WeatherViewModel extends ViewModel {
         DaggerApiComponent.create().inject(this);
     }
 
-    public void fetchLocationAndWeatherData(Boolean isRefreshing, Context context) {
+    public void fetchLocationAndWeatherData(Boolean isRefreshing, Context context, String location) {
         if (!isRefreshing) {
             isLoadingMutableLiveData.setValue(true);
         }
 
-        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-        String location = sharedPrefs.getString(
-                context.getResources().getString(R.string.location_preference_key),
-                context.getResources().getString(R.string.settings_select_location_default)
-        );
-
-        if (location.equals(context.getResources().getString(R.string.settings_location_current_value))) {
+        if (location.equals(context.getString(R.string.settings_location_current_value))) {
             fetchCurrentLocationWeatherData();
         } else {
             fetchCityLocationWeatherData(location);
