@@ -91,9 +91,19 @@ Libraries used are:
 ## Build variants
 Use the Android Studio *Build Variants* button to choose between debug and release build types.
 
+## How to test the project
+In order to test the project I mainly used Charles Proxy since the only thing I really needed to test was error handling states (Which are included in the app). Charles Proxy is a proxy tool really useful in order to monitor network calls, re-write requests and responses, ammong other cool features.
+Also you can find unit-tests under the `test` folder. Those can be executed with right click on the folder and `Run tests` option. 
+
 ## Maintainers
 This project is mantained by:
 * [Francisco Olivero](http://github.com/franzojosefo)
+
+## Version control workflow
+Since this is a solo-project I didn't find purpose on working on a `develop` branch and then creating PRs pointing to `master`
+The reason behind this, I needed to use all my available free-time to code the app, which was hard enough. 
+In a professional scenario, or maybe a complex project working with a team I would suggest creating `feature` and `defect` branches for each change as minor as it might be, and to have those merged into `develop` after code-review and a propper `PR` (Pull Request). 
+Then for release purposes merging `develop` into a `release-{version}` branch, and once release is succesfull merge into `develop`. 
 
 ## Contributing
 1. Fork it
