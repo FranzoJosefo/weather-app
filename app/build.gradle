@@ -1,13 +1,20 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-android'
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
 
 android {
-    compileSdkVersion 29
+    // Define a variable for the namespace and application ID
+    def packageName = "com.franciscoolivero.android.weatherapp"
+
+    namespace packageName
+
+    compileSdkVersion 35 // Updated to a recent stable API level
+
     defaultConfig {
-        applicationId "com.franciscoolivero.android.weatherapp"
-        minSdkVersion 15
-        targetSdkVersion 29
+        applicationId packageName
+        minSdkVersion 21 // Recommended minimum for modern development
+        targetSdkVersion 34 // Updated to match compileSdk
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -20,59 +27,76 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17 // Updated to a modern Java version
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17' // Match Java version for Kotlin
+    }
+
+    // Enable View Binding (recommended alternative to Kotlin Android Extensions)
+    buildFeatures {
+        viewBinding true
     }
 }
 
-def lifecycleExtensionVersion = '1.1.1.'
-def butterknifeVersion = '10.1.0'
-def supportVersion = '29.0.0'
-def retrofitVersion = '2.3.0'
-def rxJavaVersion = '2.1.1'
-def daggerVersion = '2.14.1'
-def mockitoVersion = '2.11.0'
-def picassoVersion = '2.71828'
-def kotlin_version = '1.3.71'
-
+// Use version catalogs or updated versions directly
+// Removed old version variables for clarity and simplicity in this example
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    implementation "com.android.support:design:$supportVersion"
+    // AndroidX Libraries (ensuring latest stable versions)
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.viewpager2:viewpager2:1.1.0'
+    implementation 'androidx.fragment:fragment-ktx:1.8.6'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.preference:preference-ktx:1.2.1'
 
-    implementation "android.arch.lifecycle:extensions:$lifecycleExtensionVersion"
+    // Lifecycle (Migrating away from lifecycle-extensions)
+    // Use these instead:
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.9.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.9.0'
+    // If you need DefaultLifecycleObserver:
+    implementation 'androidx.lifecycle:lifecycle-common-java8:2.9.0'
 
-    implementation "com.jakewharton:butterknife:$butterknifeVersion"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
+    // Networking (Retrofit and RxJava - Updated versions)
+    implementation "com.squareup.retrofit2:retrofit:2.10.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.10.0"
+    implementation "com.squareup.retrofit2:adapter-rxjava3:2.9.0"
+    // Using RxJava3 adapter for RxJava3
+    // For RxJava3:
+    implementation "io.reactivex.rxjava3:rxjava:3.1.8"
+    implementation "io.reactivex.rxjava3:rxandroid:3.0.2"
 
-    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    // Image Loading (Updated Picasso)
+    // Consider migrating to Coil or Glide for better performance and features in modern apps
+    implementation "com.squareup.picasso:picasso:2.8"
+    // Dependency Injection (Updated Dagger, consider Hilt)
+    // Hilt is recommended for new Dagger projects in Android
+    // If you stick with Dagger:
+    implementation "com.google.dagger:dagger:2.50" // Latest as of now
+    implementation "com.google.dagger:dagger-android-support:2.50" // Latest as of now
+    annotationProcessor "com.google.dagger:dagger-compiler:2.50" // Latest as of now
+    annotationProcessor "com.google.dagger:dagger-android-processor:2.50" // Latest as of now
+    // If using Kapt for Kotlin:
+//    kapt "com.google.dagger:dagger-compiler:2.50" //This line crashes. Not sure if I need Kapt tho, what the heck is Kapt anyways... I need to study
+//    kapt "com.google.dagger:dagger-android-processor:2.50"
 
-    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
-    implementation "io.reactivex.rxjava2:rxandroid:$rxJavaVersion"
+    // Testing (Updated versions)
+    testImplementation 'junit:junit:4.13.2' // Latest as of now
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1' // Latest as of now
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1' // Latest as of now
+    testImplementation "org.mockito:mockito-core:5.10.0" // Latest as of now
+    testImplementation "androidx.arch.core:core-testing:2.2.0" // Latest as of now
 
-    implementation "com.squareup.picasso:picasso:$picassoVersion"
-
-    implementation "com.google.dagger:dagger:$daggerVersion"
-    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
-    implementation "androidx.legacy:legacy-support-v4:1.0.0"
-    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
-    annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion"
-
-    testImplementation "org.mockito:mockito-inline:$mockitoVersion"
-    testImplementation "android.arch.core:core-testing:1.1.1"
-
-    implementation 'androidx.viewpager2:viewpager2:1.1.0-alpha01'
-    implementation 'androidx.fragment:fragment-ktx:1.3.0-alpha03'
-    implementation 'com.google.android.material:material:1.2.0-alpha05'
-
-    implementation 'androidx.preference:preference:1.1.0'
-
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+//     Kotlin Stdlib (usually managed by the Kotlin plugin now)
+//     You likely don't need this explicit dependency with recent Kotlin versions
+//     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
+
+// If you use Kapt for Kotlin annotation processing (needed for Dagger with Kotlin)
+apply plugin: 'kotlin-kapt'
