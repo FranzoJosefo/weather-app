@@ -40,6 +40,17 @@ android {
         viewBinding true
     }
 }
+//TODO Should use variables instead for all versions
+//def lifecycleExtensionVersion = '1.1.1.'
+//def butterknifeVersion = '10.1.0'
+//def supportVersion = '29.0.0'
+//def retrofitVersion = '2.3.0'
+//def rxJavaVersion = '2.1.1'
+//def daggerVersion = '2.14.1'
+//def mockitoVersion = '2.11.0'
+//def picassoVersion = '2.71828'
+//def kotlin_version = '1.3.71'
+// eg: implementation "com.google.dagger:dagger:$daggerVersion"
 
 // Use version catalogs or updated versions directly
 // Removed old version variables for clarity and simplicity in this example
